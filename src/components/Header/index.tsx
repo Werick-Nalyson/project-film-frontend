@@ -6,7 +6,7 @@ import {
 const Header = () => {
   return (
     <Container>
-        <Text>Consulta a API de Filmes - Teste</Text>
+        <Text>Consulta a API de Filmes</Text>
     </Container>
   );
 };

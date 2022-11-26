@@ -1,14 +1,14 @@
-export interface IGetAllMovies {
+export interface IGetAllFilms {
     size: number;
     total: number;
     pages: number;
-    data: IMovie[];
+    data: IFilm[];
 }
 
-export interface IMovie {
+export interface IFilm {
     _id: String;
     title: String;
-    movie_banner: String;
+    film_banner: String;
     description: String;
     director: String;
     producer: String;

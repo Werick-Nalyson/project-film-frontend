@@ -7,24 +7,24 @@ import {
     Description,
 } from './styles'
 
-import { IMovie } from '../../services/movies/types';
+import { IFilm } from '../../services/films/types';
 
 interface IProps {
-  movie?: IMovie;
+  film?: IFilm;
 }
 
-const CardMovie = ({ movie }: IProps) => {
+const CardFilm = ({ film }: IProps) => {
   return (
     <Container>
-        <ImgFilm src={`${movie?.movie_banner}`} />
+        <ImgFilm src={`${film?.film_banner}`} />
 
         <Content>
           <WrapperTitleDate>
-            <Title>{movie?.title}</Title>
+            <Title>{film?.title}</Title>
           </WrapperTitleDate>
 
           <Description>
-            {movie?.description}
+            {film?.description}
           </Description>
         </Content>
 
@@ -32,4 +32,4 @@ const CardMovie = ({ movie }: IProps) => {
   );
 };
 
-export default CardMovie;
+export default CardFilm;

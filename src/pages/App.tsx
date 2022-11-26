@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 
-import CardMovie from "../components/CardMovie";
+import CardFilm from "../components/CardFilm";
 import {
   ListLeiloes,
   TitleFilm,
@@ -14,19 +14,19 @@ import {
 
 import { IoReloadOutline } from 'react-icons/io5'
 import { useEffect, useState } from "react";
-import * as MoviesService from "../services/movies";
-import { IMovie } from "../services/movies/types";
+import * as FilmsService from "../services/films";
+import { IFilm } from "../services/films/types";
 import { history } from "../history";
 import { useSearchParams } from "react-router-dom";
 
 function App() {
   const [searchParams] = useSearchParams();
-  const [movies, setMovies] = useState<IMovie[]>([])
+  const [films, setFilms] = useState<IFilm[]>([])
   const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || 1)
   const [pages, setPages] = useState<number[]>([])
   
   useEffect(() => {
-    loadMovies()
+    loadFilms()
   }, [currentPage])
 
   function handleChangePage (page: number) {
@@ -36,19 +36,19 @@ function App() {
     })
   }
 
-  async function loadMovies () {
-    const { data, pages  } = await MoviesService.getAll({
+  async function loadFilms () {
+    const { data, pages  } = await FilmsService.getAll({
       page: currentPage
     });
 
     setPages(Array(pages).fill(0).map((v, i) => i+1))
-    setMovies(data)
+    setFilms(data)
   }
 
-  async function handleChargeMovies () {
-    await MoviesService.chargeMovies();
+  async function handleChargeFilms () {
+    await FilmsService.chargeFilms();
 
-    await loadMovies()
+    await loadFilms()
   }
 
   return (
@@ -69,14 +69,14 @@ function App() {
             </div>
           </Pagination>
 
-          <ButtonReload onClick={handleChargeMovies}>
+          <ButtonReload onClick={handleChargeFilms}>
             <IoReloadOutline color="#FFF" size={25} />
           </ButtonReload>
         </WrapperPagination>
 
         <ContentCard>
-          {movies.map((item) => (
-            <CardMovie key={item._id.toString()} movie={item} />
+          {films.map((item) => (
+            <CardFilm key={item._id.toString()} film={item} />
           ))}
         </ContentCard>
       </Container>

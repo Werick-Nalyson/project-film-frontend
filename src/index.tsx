@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import AppRoutes from './routes/app.routes';
 import GlobalStyle from './styles.global';
-import { AuthProvider } from './contexts/AuthContext';
 import { history } from './history';
 import { HistoryRouter } from './HistoryRouter';
 
@@ -14,10 +13,7 @@ root.render(
   <HistoryRouter history={history}>
     <React.StrictMode>
       <GlobalStyle />
-
-      {/* <AuthProvider> */}
-        <AppRoutes />
-      {/* </AuthProvider> */}
+      <AppRoutes />
     </React.StrictMode>
   </HistoryRouter>
 );
